@@ -167,11 +167,8 @@ class WebGains extends \Oara\Network
         foreach ($this->_campaignMap as $campaignKey => $campaignValue) {
             $merchants = $this->_soapClient->getProgramsWithMembershipStatus($this->_user, $this->_password, $campaignKey);
             foreach ($merchants as $merchant) {
-                if ($merchant->programMembershipStatusName == 'Live' || $merchant->programMembershipStatusName == 'Joined') {
-                    $merchantList[$merchant->programID]["cid"] = $merchant->programID;
-                    $merchantList[$merchant->programID]["name"] = $merchant->programName;
-                }
-
+                $merchantList[$merchant->programID]["cid"] = $merchant->programID;
+                $merchantList[$merchant->programID]["name"] = $merchant->programName;
             }
         }
         return $merchantList;

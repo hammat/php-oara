@@ -78,7 +78,7 @@ class Effiliation extends \Oara\Network
     public function getMerchantList()
     {
         $merchants = array();
-        $url = 'http://api.effiliation.com/apiv2/programs.xml?key=' . $this->_credentials["apipassword"] . "&filter=active";
+        $url = 'http://api.effiliation.com/apiv2/programs.xml?key=' . $this->_credentials["apipassword"] . "&filter=all";
         $content = @\file_get_contents($url);
         $xml = \simplexml_load_string($content, null, LIBXML_NOERROR | LIBXML_NOWARNING);
         foreach ($xml->program as $merchant) {

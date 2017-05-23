@@ -128,9 +128,7 @@ class AffiliateWindow extends \Oara\Network
     {
         if ($this->_oldAPI) {
             $merchantList = array();
-            $params = array();
-            $params['sRelationship'] = 'joined';
-            $merchants = $this->_apiClient->getMerchantList($params)->getMerchantListReturn;
+            $merchants = $this->_apiClient->getMerchantList()->getMerchantListReturn;
             foreach ($merchants as $merchant) {
                 if (count($this->_sitesAllowed) == 0 || \in_array($merchant->oPrimaryRegion->sCountryCode, $this->_sitesAllowed)) {
                     $merchantArray = array();
@@ -140,14 +138,10 @@ class AffiliateWindow extends \Oara\Network
                     $merchantList[] = $merchantArray;
                 }
             }
-            return $merchantList;
         } else {
-
-
             $merchantList = array();
             $urls = array();
             $valuesFromExport = array();
-            $valuesFromExport[] = new \Oara\Curl\Parameter('relationship', "joined");
             $valuesFromExport[] = new \Oara\Curl\Parameter('accessToken', $this->_password);
             $urls[] = new \Oara\Curl\Request("https://api.awin.com/publishers/{$this->_accountId}/programmes/?", $valuesFromExport);
             $merchantJson = $this->_client->get($urls);

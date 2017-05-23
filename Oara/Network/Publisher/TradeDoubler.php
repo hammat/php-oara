@@ -172,7 +172,6 @@ class TradeDoubler extends \Oara\Network
             new \Oara\Curl\Parameter('favoriteId', ''),
             new \Oara\Curl\Parameter('favoriteName', ''),
             new \Oara\Curl\Parameter('favoriteDescription', ''),
-            new \Oara\Curl\Parameter('programAffiliateStatusId', '3')
         );
         $urls = array();
         $urls[] = new \Oara\Curl\Request('http://publisher.tradedoubler.com/pan/aReport3Internal.action?', $valuesFormExport);
@@ -180,67 +179,6 @@ class TradeDoubler extends \Oara\Network
         $exportReport[0] = self::checkReportError($exportReport[0], $urls[0]);
         $merchantReportList = self::getExportMerchantReport($exportReport[0]);
 
-        $valuesFormExport = array(new \Oara\Curl\Parameter('reportName', 'aAffiliateMyProgramsReport'),
-            new \Oara\Curl\Parameter('tabMenuName', ''),
-            new \Oara\Curl\Parameter('isPostBack', ''),
-            new \Oara\Curl\Parameter('showAdvanced', 'true'),
-            new \Oara\Curl\Parameter('showFavorite', 'false'),
-            new \Oara\Curl\Parameter('run_as_organization_id', ''),
-            new \Oara\Curl\Parameter('minRelativeIntervalStartTime', '0'),
-            new \Oara\Curl\Parameter('maxIntervalSize', '0'),
-            new \Oara\Curl\Parameter('interval', 'MONTHS'),
-            new \Oara\Curl\Parameter('reportPrograms', ''),
-            new \Oara\Curl\Parameter('reportTitleTextKey', 'REPORT3_SERVICE_REPORTS_AAFFILIATEMYPROGRAMSREPORT_TITLE'),
-            new \Oara\Curl\Parameter('setColumns', 'true'),
-            new \Oara\Curl\Parameter('latestDayToExecute', '0'),
-            new \Oara\Curl\Parameter('affiliateId', ''),
-            new \Oara\Curl\Parameter('includeWarningColumn', 'true'),
-            new \Oara\Curl\Parameter('sortBy', 'orderDefault'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('columns', 'programId'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('columns', 'affiliateId'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('columns', 'applicationDate'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'columns'),
-            new \Oara\Curl\Parameter('columns', 'status'),
-            new \Oara\Curl\Parameter('autoCheckbox', 'useMetricColumn'),
-            new \Oara\Curl\Parameter('customKeyMetricCount', '0'),
-            new \Oara\Curl\Parameter('metric1.name', ''),
-            new \Oara\Curl\Parameter('metric1.midFactor', ''),
-            new \Oara\Curl\Parameter('metric1.midOperator', '/'),
-            new \Oara\Curl\Parameter('metric1.columnName1', 'programId'),
-            new \Oara\Curl\Parameter('metric1.operator1', '/'),
-            new \Oara\Curl\Parameter('metric1.columnName2', 'programId'),
-            new \Oara\Curl\Parameter('metric1.lastOperator', '/'),
-            new \Oara\Curl\Parameter('metric1.factor', ''),
-            new \Oara\Curl\Parameter('metric1.summaryType', 'NONE'),
-            new \Oara\Curl\Parameter('format', 'CSV'),
-            new \Oara\Curl\Parameter('separator', ','),
-            new \Oara\Curl\Parameter('dateType', '0'),
-            new \Oara\Curl\Parameter('favoriteId', ''),
-            new \Oara\Curl\Parameter('favoriteName', ''),
-            new \Oara\Curl\Parameter('favoriteDescription', ''),
-            new \Oara\Curl\Parameter('programAffiliateStatusId', '4')
-        );
-        $urls = array();
-        $urls[] = new \Oara\Curl\Request('http://publisher.tradedoubler.com/pan/aReport3Internal.action?', $valuesFormExport);
-        $exportReport = $this->_client->post($urls);
-        $exportReport[0] = self::checkReportError($exportReport[0], $urls[0]);
-        $merchantReportListAux = self::getExportMerchantReport($exportReport[0]);
-        foreach ($merchantReportListAux as $key => $value) {
-            $merchantReportList[$key] = $value;
-        }
         return $merchantReportList;
     }
 

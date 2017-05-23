@@ -85,10 +85,9 @@ class TradeTracker extends \Oara\Network
         $merchants = array();
 
         $merchantsAux = array();
-        $options = array('assignmentStatus' => 'accepted');
         $affiliateSitesList = $this->_apiClient->getAffiliateSites();
         foreach ($affiliateSitesList as $affiliateSite) {
-            $campaignsList = $this->_apiClient->getCampaigns($affiliateSite->ID, $options);
+            $campaignsList = $this->_apiClient->getCampaigns($affiliateSite->ID);
             foreach ($campaignsList as $campaign) {
                 if (!isset($merchantsAux[$campaign->name])) {
                     $obj = Array();

@@ -95,12 +95,12 @@ class Zanox extends \Oara\Network
     {
         $merchantList = array();
 
-        $programApplicationList = $this->_apiClient->getProgramApplications(null, null, "confirmed", 0, $this->_pageSize);
+        $programApplicationList = $this->_apiClient->getProgramApplications(null, null, "", 0, $this->_pageSize);
         if ($programApplicationList->total > 0) {
             $iterationProgramApplicationList = self::calculeIterationNumber($programApplicationList->total, $this->_pageSize);
             for ($j = 0; $j < $iterationProgramApplicationList; $j++) {
 
-                $programApplicationList = $this->_apiClient->getProgramApplications(null, null, "confirmed", $j, $this->_pageSize);
+                $programApplicationList = $this->_apiClient->getProgramApplications(null, null, "", $j, $this->_pageSize);
                 foreach ($programApplicationList->programApplicationItems->programApplicationItem as $programApplication) {
                     if (!isset($merchantList[$programApplication->program->id])) {
                         $obj = array();
