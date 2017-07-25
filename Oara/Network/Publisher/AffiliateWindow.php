@@ -138,6 +138,7 @@ class AffiliateWindow extends \Oara\Network
                     $merchantList[] = $merchantArray;
                 }
             }
+            return $merchantList;
         } else {
             $merchantList = array();
             $urls = array();
